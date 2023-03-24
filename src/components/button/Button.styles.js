@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Container = styled.button`
-  padding: 0.9rem 1.8rem;
+  padding: 1.2rem 2.5rem;
   background-color: ${(props) =>
     props.type === "inverted" ? "hsl(180, 66%, 49%)" : "transparent"};
 

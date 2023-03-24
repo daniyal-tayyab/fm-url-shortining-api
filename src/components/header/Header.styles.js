@@ -9,6 +9,14 @@ export const Container = styled.header`
   display: flex;
   align-items: center;
   position: relative;
+
+  @media (max-width: 1080px) {
+    justify-content: space-between;
+  }
+
+  @media (max-width: 1080px) {
+    justify-content: space-between;
+  }
 `;
 
 export const Nav = styled.nav`
@@ -34,6 +42,10 @@ export const Nav = styled.nav`
       margin-right: 4rem;
     }
   }
+
+  @media (max-width: 1080px) {
+    display: none;
+  }
 `;
 
 export const AuthContainer = styled.div`
@@ -42,6 +54,10 @@ export const AuthContainer = styled.div`
   button:not(:last-child) {
     margin-right: 1rem;
   }
+
+  @media (max-width: 1080px) {
+    display: none;
+  }
 `;
 
 export const MobileMenuIcon = styled(AiOutlineMenu)`
@@ -49,4 +65,8 @@ export const MobileMenuIcon = styled(AiOutlineMenu)`
   color: ${(props) => props.theme.grayishViolet};
   font-size: 2rem;
   cursor: pointer;
+
+  @media (min-width: 1080px) {
+    display: none;
+  }
 `;

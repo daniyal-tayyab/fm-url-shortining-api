@@ -10,16 +10,10 @@ import MobileMenu from "../mobile-menu/MobileMenu";
 const Header = () => {
   const [isMenuBarOpen, setIsMenuBarOpen] = useState(false);
 
-  const toggleMobileMenu = () => setIsMenuBarOpen(!isMenuBarOpen);
-
-  useEffect(() => {
-    console.log(isMenuBarOpen);
-    gsap.fromTo(
-      ".mobile-menu",
-      { scale: 0 },
-      { scale: 1, transformOrigin: "center", duration: 1 }
-    );
-  }, [isMenuBarOpen]);
+  const toggleMobileMenu = () => {
+    gsap.to(".mobile-menu", { x: 0, y: 200 });
+    setIsMenuBarOpen(!isMenuBarOpen);
+  };
 
   return (
     <Container>
