@@ -1,5 +1,5 @@
 export const primary = {
-  cyan: "hsl(180, 66 %, 49 %)",
+  cyan: "hsl(180, 66%, 49%)",
   darkViolet: "hsl(257, 27%, 26%)",
 
   red: "hsl(0, 87%, 67%)",

@@ -8,7 +8,7 @@ export const Container = styled.button`
   color: ${(props) =>
     props.type === "inverted" ? "#fff" : "hsl(257, 7%, 63%)"};
 
-  border-radius: 2rem;
+  border-radius: ${(props) => (props.shortBorder === "true" ? "8px" : "2rem")};
   border: none;
   font-weight: 700;
   cursor: pointer;
