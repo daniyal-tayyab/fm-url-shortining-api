@@ -24,12 +24,27 @@ export const InputContainer = styled.div`
   display: flex;
   column-gap: 2rem;
 
+  position: relative;
+
   input {
     width: 85%;
     border-radius: 8px;
     border: none;
     padding-left: 1.5rem;
     color: ${(props) => props.theme.grayishViolet};
+
+    &[aria-invalid="true"] {
+      outline: 2px solid ${(props) => props.theme.red};
+    }
+
+    &[aria-invalid="true"] ~ span {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    &[aria-invalid="false"] ~ span {
+      opacity: 0;
+    }
   }
 
   button {
@@ -37,7 +52,20 @@ export const InputContainer = styled.div`
   }
 `;
 
+export const ErrorMessage = styled.span`
+  position: absolute;
+  left: 0;
+  top: 4.5rem;
+
+  font-size: 1rem;
+  color: ${(props) => props.theme.red};
+  opacity: 0;
+  transform: translateY(-1rem);
+  transition: all 0.5s;
+`;
+
 export const RecentSection = styled.div`
   margin-top: 2rem;
   width: 100%;
+  font-style: italic;
 `;
