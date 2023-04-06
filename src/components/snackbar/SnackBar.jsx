@@ -3,9 +3,12 @@ import Button from "@mui/material/Button";
 import Snackbar from "@mui/material/Snackbar";
 import IconButton from "@mui/material/IconButton";
 import CloseIcon from "@mui/icons-material/Close";
+import { Alert } from "@mui/material";
 
-export default function SnackBar() {
-  const [open, setOpen] = React.useState(false);
+export default function SnackBar({ open, setOpen, isValidUrl }) {
+  // const [open, setOpen] = React.useState(false);
+  const isValid = isValidUrl;
+  const severity = isValid ? "success" : "error";
 
   const handleClick = () => {
     setOpen(true);
@@ -21,9 +24,6 @@ export default function SnackBar() {
 
   const action = (
     <React.Fragment>
-      <Button color="secondary" size="small" onClick={handleClose}>
-        UNDO
-      </Button>
       <IconButton
         size="small"
         aria-label="close"
@@ -37,14 +37,21 @@ export default function SnackBar() {
 
   return (
     <div>
-      <Button onClick={handleClick}>Open simple snackbar</Button>
       <Snackbar
         open={open}
         autoHideDuration={6000}
-        onClose={handleClose}
-        message="Note archived"
+        sx={{ width: "250px" }}
         action={action}
-      />
+      >
+        <Alert
+          severity={severity}
+          variant="filled"
+          sx={{ width: "100%", fontSize: "13px" }}
+          onClose={handleClose}
+        >
+          {severity == "error" ? "Invalid URL" : " Valid URL"}
+        </Alert>
+      </Snackbar>
     </div>
   );
 }

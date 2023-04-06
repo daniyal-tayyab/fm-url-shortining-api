@@ -4,7 +4,7 @@ import shortenBg from "../../assets/images/bg-shorten-desktop.svg";
 
 export const Container = styled.section`
   width: 100%;
-  height: 110px;
+  height: auto;
   padding: 4rem;
   border-radius: 8px;
   background-image: url(${shortenBg});
@@ -20,7 +20,7 @@ export const Container = styled.section`
 
 export const InputContainer = styled.div`
   width: 100%;
-  height: 40px;
+  height: auto;
   display: flex;
   column-gap: 2rem;
 
@@ -45,10 +45,17 @@ export const InputContainer = styled.div`
     &[aria-invalid="false"] ~ span {
       opacity: 0;
     }
+
+    @media (max-width: 500px) {
+      width: 100%;
+      margin-bottom: 1rem;
+      padding: 1.2rem;
+      margin-bottom: 2.8rem;
+    }
   }
 
-  button {
-    width: 15%;
+  @media (max-width: 500px) {
+    flex-direction: column;
   }
 `;
 
@@ -62,6 +69,9 @@ export const ErrorMessage = styled.span`
   opacity: 0;
   transform: translateY(-1rem);
   transition: all 0.5s;
+
+  @media (max-width: 500px) {
+  }
 `;
 
 export const RecentSection = styled.div`
