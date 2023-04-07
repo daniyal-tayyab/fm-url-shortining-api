@@ -16,6 +16,10 @@ export const HeadingSection = styled.div`
 
   h3 {
     font-size: 3rem;
+
+    @media (max-width: 600px) {
+      font-size: 2.5rem;
+    }
   }
 
   p {
@@ -23,6 +27,10 @@ export const HeadingSection = styled.div`
     color: ${(props) => props.theme.grayishViolet};
     margin-top: 1rem;
     width: 50%;
+
+    @media (max-width: 600px) {
+      width: 100%;
+    }
   }
 `;
 

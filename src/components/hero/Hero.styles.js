@@ -22,6 +22,11 @@ export const ContentSection = styled.div`
     font-size: 5rem;
     font-weight: bold;
     line-height: 1.2;
+
+    @media (max-width: 600px) {
+      font-size: 3.5rem;
+      margin-bottom: 2rem;
+    }
   }
 
   p {
