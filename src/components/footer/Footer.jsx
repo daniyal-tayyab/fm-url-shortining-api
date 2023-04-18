@@ -42,7 +42,7 @@ const Footer = () => {
       </LinksContainer>
       <SocialContainer>
         {socials.map((item, index) => (
-          <img src={item} key={index} />
+          <img src={item} key={index} alt={item} />
         ))}
       </SocialContainer>
     </Container>
