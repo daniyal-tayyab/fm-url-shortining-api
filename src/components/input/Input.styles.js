@@ -79,3 +79,7 @@ export const RecentSection = styled.div`
   width: 100%;
   font-style: italic;
 `;
+
+export const SnackbarMessage = styled.p`
+  font-size: 1.4rem;
+`;

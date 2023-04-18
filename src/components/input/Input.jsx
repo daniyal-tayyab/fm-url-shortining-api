@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 
+import { useSnackbar } from "notistack";
+
 import Button from "../button/Button";
 import RecentUrl from "../recent-url/RecentUrl";
 
@@ -8,18 +10,16 @@ import {
   InputContainer,
   RecentSection,
   ErrorMessage,
+  SnackbarMessage,
 } from "./Input.styles";
-
-import SnackBar from "../snackbar/SnackBar";
-import Loader from "../spinner-loader/Loader";
-import { useEffect } from "react";
 
 const Input = () => {
   const [url, setUrl] = useState("");
-  const [urlError, setUrlError] = useState(false);
   const [isValidUrl, setIsValidUrl] = useState(false);
-  const [isSnackOpen, setIsSnackOpen] = useState(false);
   const [recentUrls, setRecentUrls] = useState([]);
+  const [urlError, setUrlError] = useState(false);
+
+  const { enqueueSnackbar } = useSnackbar();
 
   const handleUrl = (e) => {
     if (e.target.value == 0) {
@@ -32,14 +32,25 @@ const Input = () => {
 
   const handleValidate = () => {
     if (!url) {
-      setUrlError(true);
+      let variant = "error";
+      enqueueSnackbar(<SnackbarMessage>Invalid URL!</SnackbarMessage>, {
+        variant,
+      });
       return;
     }
 
     const isValid = isValidURl(url);
 
     setIsValidUrl(isValid);
-    setIsSnackOpen(true);
+    if (!isValid) {
+      let variant = "error";
+      enqueueSnackbar(<SnackbarMessage>Invalid URL!</SnackbarMessage>, {
+        variant,
+      });
+      return;
+    }
+    let variant = "success";
+    enqueueSnackbar(<SnackbarMessage>Valid URL!</SnackbarMessage>, { variant });
   };
 
   const isValidURl = (url) => {
@@ -51,9 +62,6 @@ const Input = () => {
   };
 
   const handleShorten = () => {
-    console.log("shorten clicked");
-    // const longUrl =
-    //   "https://www.example.com/long-article-title-with-many-words-and-hyphens-that-describes-a-specific-topic-in-great-detail";
     const options = {
       method: "POST",
       headers: {
@@ -75,8 +83,6 @@ const Input = () => {
       .catch((err) => console.error(err));
 
     setUrl("");
-    setUrlError(false);
-    setIsValidUrl(false);
   };
 
   return (
@@ -113,12 +119,6 @@ const Input = () => {
           <RecentUrl key={index} url={url} />
         ))}
       </RecentSection>
-
-      <SnackBar
-        open={isSnackOpen}
-        setOpen={setIsSnackOpen}
-        isValidUrl={isValidUrl}
-      />
     </>
   );
 };
