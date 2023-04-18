@@ -83,6 +83,7 @@ const Input = () => {
       .catch((err) => console.error(err));
 
     setUrl("");
+    setIsValidUrl(false);
   };
 
   return (
@@ -93,6 +94,7 @@ const Input = () => {
             placeholder="Shorten a link here..."
             onChange={handleUrl}
             aria-invalid={urlError}
+            value={url}
           />
           <ErrorMessage>Please add a link</ErrorMessage>
           {isValidUrl ? (
